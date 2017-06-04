@@ -9,10 +9,6 @@ body {
 	font-weight: normal;
 }
 
-body#index .arrow {
-	display: none;
-}
-
 h1, h2 {
 	font-family: Montserrat, sans-serif;
 	text-rendering: optimizeLegibility;
@@ -83,7 +79,7 @@ ol ul li > a {
 }
 
 ul {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 ol ul {
@@ -92,12 +88,12 @@ ol ul {
 }
 
 ul li {
-    list-style-type: none;
-    padding: 10px 0;
+  list-style-type: none;
+  padding: 10px 0;
 }
 
 ul li:nth-of-type(n+2) {
-    border-top: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 
 ol li:nth-of-type(n+2) {
@@ -121,10 +117,10 @@ pre {
 }
 
 hr.hr-spacer {
-    margin: 50px 0;
-    background: #ddd;
-    border: 0;
-    height: 1px;
+  margin: 50px 0;
+  background: #ddd;
+  border: 0;
+  height: 1px;
 }
 
 .full-width {
@@ -141,17 +137,6 @@ hr.hr-spacer {
 .bordered {
 	box-shadow: 0 0 0px 5px #fff,
 	            0 0 5px 6px rgba(0, 0, 0, 0.28);
-}
-
-.masonry {
-    -moz-column-count: 3;
-    -webkit-column-count: 3;
-    column-count: 3;
-    -moz-column-gap: 3em;
-    -webkit-column-gap: 3em;
-    column-gap: 3em;
-    width: 85%;
-    margin: 0 auto 3em;
 }
 
 section {
@@ -173,6 +158,11 @@ section a {
 blockquote {
 	padding: 2em;
 	box-shadow: inset 0 0 50px rgba(0,0,0,0.125);
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 1rem;
 }
 
 li blockquote {
