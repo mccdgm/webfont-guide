@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="author" content="Stephy Miehle">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Webfont Guide</title>
+</head>
+
+<body>
+
+<h1>Webfont Guide</h1>
+
+<section class="single">
+
+<h2>
+  Table of Contents
+</h2>
+
+<ol>
+  <li><a href="http://stephy.mccdgm.net/guides/webfonts/#google">The Google Fonts Way</a></li>
+  <li><a href="http://stephy.mccdgm.net/guides/webfonts/#self-hosted">The Self-Hosted Way</a></li>
+  <li><a href="http://stephy.mccdgm.net/guides/webfonts/#typekit">Typekit</a></li>
+  <li><a href="http://stephy.mccdgm.net/guides/webfonts/#where">Where to find fonts</a></li>
+</ol>
+
+<div class="spacer"></div>
+
+<blockquote>
+  When specifying a web font in a CSS style, always list at least one fallback web-safe font in order to avoid unexpected behaviors. In particular, add a CSS generic font name like <code>serif</code> or <code>sans-serif</code> to the end of the list, so the browser can fall back to its default fonts if need be.
+  <cite>— Google Fonts</cite>
+</blockquote>
+
+<blockquote>
+  When choosing a font for the copy on your site, simple is better. Keep things clean and don't develop an over-complicated type. You can get more creative later with things like headlines and pull-quotes, but your body copy should always be clear and easy to read.
+  <cite>— Mashable</cite>
+</blockquote>
+
+<hr class="hr-spacer">
+
+<h2 id="google">
+  The Google Fonts Way
+</h2>
+
+<p>
+  This way is one of the simplest (and even better, it's free!). Google Fonts are a selection of open-source fonts that are already hosted for you on Google. They're easy to set up, but for advanced users, there are more tips and tricks in the <a href="https://developers.google.com/fonts/docs/getting_started">Getting Started guide</a>.
+</p>
+
+<ol>
+  <li>Visit <a href="http://www.google.com/fonts">google.com/fonts</a> to browse the available fonts. You can filter by category (sans-serif, serif, display, handwriting, and monospace) on the left side.</li>
+  <li>When you've found a font you like, click <strong>Add to collection</strong>. You can add multiple fonts to your collection.</li>
+  <li>Optionally, click on the Review tab at the bottom of the page to see how your font looks at different sizes.</li>
+  <li>When you've selected all of your fonts, click the <strong>Use</strong> tab at the bottom of the page.</li>
+  <li>Using the checkboxes, select which font weights you'd like to include. For some fonts, you'll only have one choice. For fonts that are part of a family, you probably don't need every single version.
+    <blockquote>
+      Tip: Using many font styles can slow down your webpage, so only select the font styles that you actually need on your webpage.
+    </blockquote>
+  </li>
+  <li>Optionally, select the character sets that you need. Most of the time, you can leave this section alone.</li>
+  <li>Choose the way you'd like to include your webfonts and add the code snippet to your files.
+    <ul>
+      <li>The <code>&lt;link</code> method belongs in the <code>&lt;head&gt;</code> section of your HTML and needs to be added to every page that uses the webfonts. This is the <a href="http://stackoverflow.com/questions/12316501/including-google-web-fonts-link-or-import/12380004#12380004">preferred method</a>, but for class use, @import may be simpler.</li>
+      <li>The <code>@import</code> method needs to be added to your CSS. For highest compatibility, add it to the very beginning of your document.</li>
+      <li>The <code>&lt;script&gt;</code> (Javascript) method is the same as the <code>&lt;link&gt;</code> method; it should be added to the <code>&lt;head&gt;</code> on each page as necessary.</li>
+    </ul> </li>
+  <li>Reference the new font names in your CSS by listing the webfont first, then a fallback.<br>For example: <code>body { font-family: 'Open Sans', sans-serif; }</code></li>
+  <li>Save and upload! It's that easy.</li>
+</ol>
+
+<hr class="hr-spacer">
+
+<h2 id="self-hosted">
+  The self-hosted way
+</h2>
+
+<p>
+  Self-hosted webfonts give you greater variety, but you also need to prepare your fonts for use on the web. In order to support various browsers, you need a few file formats that aren't used on the desktop. The easiest way is to convert your fonts through the webfont generator on <a href="http://www.fontsquirrel.com/tools/webfont-generator">FontSquirrel</a>. For most purposes, the Optimal settings should be fine, but those looking for more options can enable Expert mode.
+</p>
+
+<img src="images/fontsquirrel.png" class="full-width" title="FontSquirrel configuration screen" alt="FontSquirrel configuration screen">
+
+<ol>
+  <li>
+    Select the font files you'd like to convert by clicking on the <strong>Upload Fonts</strong> button. You can upload OTF and TTF files.
+  </li>
+  <li>
+    Check the box that says "Yes, the fonts I'm uploading are legally eligible for web embedding." Follow the rules: don't use fonts that you can't legally embed! See <a href="http://stephy.mccdgm.net/guides/webfonts/#where">where to find fonts</a> in the following section.
+  </li>
+  <li>
+    If you're using Expert mode, customize your webfont kit.
+  </li>
+  <li>
+    Click the <strong>Download your kit</strong> button to download a ZIP file that contains sample CSS, a demo HTML page, and (of course) your webfont files. Unzip the file to get to the files inside it; put these files inside your site directory. I usually make a webfonts folder and put all of these files inside it.
+  </li>
+  <li>
+    Optionally, delete the HTML and TXT files and the entire specimen_files folder. These are only helpful for testing your webfont and remembering settings; they are not necessary for actual use.
+  </li>
+  <li>
+    Check the <code>stylesheet.css</code> to see how to reference your font name. Sometimes, you will want to rename this. For instance, I'd change <code>font-family: 'ostrich_sansheavy';</code> to <code>font-family: 'Ostrich Sans Heavy';</code>. Note that you <strong>do not</strong> specify a fallback font here. <strong>This is the name that you'll use to reference the font in your main CSS.</strong>
+
+    <br><br>If I had multiple fonts in the Ostrich Sans family, I'd rename all of them to <code>font-family: 'Ostrich Sans';</code> and change <code>font-weight: normal;</code> to something more appropriate, like <code>font-weight: 900;</code>. You can do the same with italics (changing the <code>font-weight</code>. That way, my font family would be linked together and I could simply change the weight and style as needed.
+  </li>
+  <li>
+    FontSquirrel has done most of the heavy lifting for you, so the <code>@font-face</code> code is all prepared. Link to your webfont CSS just like you'd link to your main CSS:
+
+    <p><code>&lt;link rel="stylesheet" type="text/css" href="stylesheet.css"&gt;</code>.</p>
+
+    <p>I find that filename a little vague, so in my own workflow, I rename <code>stylesheet.css</code> to <code>fontname-wf.css</code> and have my site files organized like so:</p>
+
+    <pre>
+project-name/
+    images/
+    webfonts/
+        ostrichsans-wf.css
+        OstrichSans-Heavy-webfont.eot
+        OstrichSans-Heavy-webfont.ttf
+        OstrichSans-Heavy-webfont.svg
+        OstrichSans-Heavy-webfont.woff
+        OstrichSans-Heavy-webfont.woff2
+    index.html
+    style.css
+    </pre>
+
+    <p>
+      In my HTML, I'd add <code>&lt;link rel="stylesheet" type="text/css" href="webfonts/ostrichsans-wf.css"&gt;</code> right before I linked to my main stylesheet. Since I moved my files into a webfonts folder, that needs to be referenced in the path to the webfont CSS.
+    </p>
+  </li>
+  <li>Reference the new font names in your CSS by listing the webfont first, then a fallback.<br>For example: <code>h1 { font-family: 'Ostrich Sans Heavy', sans-serif; }</code></li>
+  <li>Save and upload all of your files.</li>
+</ol>
+
+<hr class="hr-spacer">
+
+<h2 id="typekit">
+  Typekit
+</h2>
+
+<blockquote>
+  Typekit is a subscription font service that brings thousands of fonts from foundry partners into one library for quick browsing, easy use on the web or on your desktop, and endless typographic inspiration.
+</blockquote>
+
+<p>
+  <a href="https://typekit.com/">Typekit</a> was acquired by Adobe and integrated into Creative Cloud, so you may already have a membership. Webfonts are hosted by Typekit. There are multiple payment plans, from free to premium service with a yearly subscription.
+</p>
+
+<hr class="hr-spacer">
+
+<h2 id="where">
+  Where to find fonts
+</h2>
+
+<p>
+  The number-one rule: <strong>only use fonts you have permission to use</strong>. Even if you pay for a font, webfont use might be disallowed or require an additional license, and yes, companies do get in trouble for this. Be ethical with your design and development. You can view a list of providers at <a href="http://webfonts.info/resources/fonts-available-for-@fontface-embedding">webfonts.info</a> or read below for a few recommendations.
+</p>
+
+<h3>
+  Marketplaces
+</h3>
+  <div class="indent">
+    <h4>
+      MyFonts
+    </h4>
+
+    <p><a href="http://www.myfonts.com/">MyFonts</a> is mostly a service for commercial fonts. Webfonts require a different license than desktop fonts, but you can save money by purchasing both together. You can find a few <a href="http://www.myfonts.com/search/lowest_price%3A%5B%2A+TO+0%5D/fonts">free fonts</a>, but most are demos or dingbat/ornamental versions. Their newsletter is a great read and you can often get awesome introductory pricing or discounts on their <a href="http://www.myfonts.com/specials/">Special Offers page</a>.</p>
+
+    <h4>
+      FontSpring
+    </h4>
+
+    <p><a href="http://www.fontspring.com/">FontSpring</a> offers "worry-free, perpetual font licensing for everyone." Their license FAQ is extremely helpful and easy to understand.</p>
+
+    <h4>
+      Creative Market
+    </h4>
+
+    <p>Creative Market is a general marketplace for design resources, but their <a href="https://creativemarket.com/fonts">font section</a> has some gorgeous options. There are also <a href="https://creativemarket.com/free-goods">free files</a> (fonts included) every week; this is a great way to add to your arsenal. Just make sure that any fonts you purchase allow for webfont use.</p>
+
+    <h4>
+      YWFT
+    </h4>
+
+    <p>
+      <a href="https://www.youworkforthem.com/">You Work For Them (YWFT)</a> is another marketplace, but there are many fonts here that can't be found elsewhere. Watch for their huge sales!
+    </p>
+  </div>
+
+<h3>
+  Font foundries and collectives
+</h3>
+
+<p>
+  Many type designers sell their fonts on their own sites. If you find a company you like, visit their company page. Some companies sell their fonts at a discount this way.
+</p>
+
+<div class="indent">
+  <h4>
+    Cloud.typography
+  </h4>
+
+  <p>
+    CSS-only (no Javascript) webfonts from the Hoefler Type Foundry optimized for screen use. They are hosted by Hoefler &amp; Co. You can purchase fonts for web use only or you can use the fonts that you've already licensed for the desktop, but those still require a Cloud.typography subscription.
+  </p>
+
+  <h4>
+    Lost Type Co-Op
+  </h4>
+
+  <p>
+    <a href="http://losttype.com/browse/">Lost Type</a> has a pay-what-you-want model for personal use (yes, $0 is valid) but requires a minimum donation for commercial use. Most of their fonts are display fonts.
+  </p>
+
+  <h4>
+    Fontfabric
+  </h4>
+
+  <p>
+    Each week at <a href="http://fontfabric.com/">Fontfabric</a>, a new and totally unique font will be rolled out of production, which you can easily buy or download free of charge. Fontfabric is an independent type foundry.
+  </p>
+</div>
+
+<h3>
+  Free font sites
+</h3>
+
+  <div class="indent">
+    <h4>
+      FontSquirrel
+    </h4>
+
+    <p>
+      Home of the webfont generator, <a href="http://www.fontsquirrel.com/">FontSquirrel</a> also collects and categorizes free fonts. Make sure that you look for the appropriate license type; <a href="http://www.fontsquirrel.com/fonts/list/find_fonts?filter%5Blicense%5D%5B0%5D=web">here's the link to webfonts</a>.
+    </p>
+
+    <h4>
+      The League of Moveable Type
+    </h4>
+
+    <p>
+      In the spirit of sharing, all fonts made available by <a href="https://www.theleagueofmoveabletype.com/">The League</a> are subject to SIL’s Open Font License. It means that you’re allowed to use these fonts personally or commercially, as long as you credit the original creator, and if you made tweaks and changes to the typefaces, any new typefaces resulting from it should be licensed under the same terms. That way all our fonts and any new fonts resulting from them will always be open.
+    </p>
+
+    <h4>
+      dafont
+    </h4>
+
+    <p>
+      <a href="http://www.dafont.com/">Dafont</a> has a huge collection of free fonts, mostly display fonts (things you'd use for headlines, not body copy). Though there are some gems here, there are also a lot of poorly-designed and poorly-kerned fonts; be careful with what you select. Also, pay attention to the licenses: fonts here can be public domain / GPL / OFL, 100% free, free for personal use (meaning: not for commercial work with clients), donationware (requires a donation to use), shareware, and demo (may be lacking some letters, symbols, or features). Those that are free for personal use can often be used in commercial work if you pay for a license, but it varies on each font.
+    </p>
+
+    <p>
+      To make sure that you can 100%-free use a font, use the following settings in your search:
+    </p>
+
+    <img src="images/dafont-free.png" title="Free fonts on dafont" alt="Free fonts on dafont" class="max-width bordered">
+
+    <p>
+      If you're not seeing those options, click <strong>More options</strong> next to the Submit button.
+    </p>
+  </div>
+
+<h3>
+  Blogs and Guest Posts
+</h3>
+
+<p>
+  As students and designers, one of the best things you can do is read design blogs.
+</p>
+
+<ul>
+  <li><a href="http://www.typewolf.com/open-source-web-fonts">Typewolf: Top 30 Free Open-Source Web Fonts</a></li>
+  <li><a href="http://www.smashingmagazine.com/2014/03/12/taking-a-second-look-at-free-fonts/">Smashing Magazine: Taking A Second Look At Free Fonts</a></li>
+  <li><a href="http://www.smashingmagazine.com/tag/free-fonts/">Smashing Magazine: Posts tagged "free fonts"</a></li>
+  <li><a href="http://www.fontsquirrel.com/fonts/list/popular">FontSquirrel: Popular Fonts</a></li>
+  <li><a href="http://www.awwwards.com/the-100-greatest-free-fonts-for-2014.html">Awwwards: The 100 Greatest Free Fonts for 2014</a></li>
+  <li><a href="http://www.creativebloq.com/web-design/choose-web-fonts-1233034">Choosing web fonts: 15 expert tips</a></li>
+  <li><a href="http://www.goodwebfonts.com/">Good Web Fonts</a></li>
+</ul>
+
+</section>
+</body>
+</html>
